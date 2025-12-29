@@ -1,0 +1,31 @@
+name: Daily Maintenance
+
+on:
+  schedule:
+    - cron: '0 2 * * *'  # Runs at 2 AM UTC daily
+  workflow_dispatch:  # Allows manual trigger
+
+jobs:
+  cleanup:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+        
+      - name: Run Docker Cleanup Script
+        run: |
+          chmod +x ./scripts/cleanup-docker.sh
+          ./scripts/cleanup-docker.sh --all
+          
+      - name: Run Log Monitor
+        run: |
+          python3 ./scripts/log-monitor.py
+          
+      - name: System Info
+        run: |
+          echo "🖥️ Runner System Information:"
+          uname -a
+          df -h
+          docker --version
+          python3 --version
