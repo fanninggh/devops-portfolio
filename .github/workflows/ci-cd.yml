@@ -1,0 +1,5 @@
+# Add a step to check for port conflicts
+- name: Check and free port 5000 if needed
+  run: |
+    # Kill any process on port 5000 (in CI environment only!)
+    sudo fuser -k 5000/tcp 2>/dev/null || true
