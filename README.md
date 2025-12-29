@@ -55,3 +55,8 @@ devops-portfolio/
 
 ---
 *This portfolio is part of a 12-week intensive DevOps learning journey.*
+# DevOps Portfolio
+
+![GitHub Actions Workflow Status](https://github.com/fanninggh/devops-portfolio/actions/workflows/daily-cleanup.yml/badge.svg)
+
+A hands-on portfolio showcasing DevOps projects...
